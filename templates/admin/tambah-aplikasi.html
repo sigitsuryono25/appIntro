@@ -1,0 +1,59 @@
+{% include 'admin/header_footer/header.html' %}
+<form action="/admins/tambah-aplikasi-proses/" method="POST" enctype="multipart/form-data" id="form-aplikasi">
+    {% csrf_token %}
+    <div class="form-group">
+        <label>ID Aplikasi</label>
+        <input type="text" readonly name="id-aplikasi" value="{{ id }}" class="form-control" required/>
+    </div>
+    <fieldset>
+        <legend>Aplikasi</legend>
+    </fieldset>
+    <div class="form-group">
+        <label>Nama Aplikasi</label>
+        <input type="text" name="nama-aplikasi" class="form-control" required autofocus/>
+    </div>
+    <div class="form-group">
+        <label>Deskripsi</label>
+        <textarea class="form-control" name="deskripsi" required></textarea>
+    </div>
+
+    <fieldset>
+        <legend>Sub Judul</legend>
+    </fieldset>
+
+    <div class="form-group">
+        <label>Sub Judul</label>
+        <input type="text" name="sub-judul" class="form-control" required/>
+    </div>
+    <div class="form-group">
+        <label>Deskripsi Sub Judul</label>
+        <textarea class="form-control" name="deskripsi-sub-judul" required></textarea>
+    </div>
+
+    <fieldset>
+        <legend>Fitur (Maksimal 6 Fitur)
+            <a class="btn btn-dropbox text-white" id="add-fitur">
+                <span class="fa fa-plus"></span> Tambah Kolom Fitur
+            </a>
+        </legend>
+    </fieldset>
+    <table class="table table-condensed" id="fitur-table">
+        <tbody>
+        <tr>
+            <td>
+                <span>Fitur 1</span>
+                <div class="form-group">
+                    <label>Nama Fitur</label>
+                    <input type="text" name="nama-fitur[]" class="form-control" required/>
+                </div>
+                <div class="form-group">
+                    <label>Deskripsi Fitur</label>
+                    <textarea class="form-control" name="deskripsi-fitur[]" required></textarea>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+{% include 'admin/floating-button.html' %}
+{% include 'admin/header_footer/footer.html' %}
